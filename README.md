@@ -1,7 +1,5 @@
 # VBAN Deck
 
-<p align="center"><img src="assets/vban-deck-logo.svg" width="180" alt="VBAN Deck logo"></p>
-
 VBAN Deck sends device audio as VBAN PCM packets to a receiver such as Voicemeeter. It supports the platforms that have working builds:
 
 | Target | Directory | Status |
