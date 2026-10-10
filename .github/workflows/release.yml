@@ -1,8 +1,12 @@
 name: Draft release
 
 on:
-  push:
-    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to release (for example, v0.2.1)
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -14,8 +18,16 @@ jobs:
       version: ${{ steps.version.outputs.value }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
       - id: version
-        run: echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          case "$TAG" in
+            v*) echo "value=${TAG#v}" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Tag must start with v" >&2; exit 1 ;;
+          esac
       - name: Check release versions
         env:
           VERSION: ${{ steps.version.outputs.value }}
@@ -34,6 +46,8 @@ jobs:
         working-directory: android
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -62,6 +76,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
       - uses: actions/download-artifact@v4
         with:
           name: VBANDeck-Android-${{ needs.validate.outputs.version }}

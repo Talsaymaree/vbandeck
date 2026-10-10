@@ -28,7 +28,7 @@ Configure these in the repository's protected `release` environment before pushi
 
 1. Commit the release changes and push `main`.
 2. Create and push an annotated tag, for example `git tag -a v0.2.1 -m "VBAN Deck 0.2.1"` then `git push origin v0.2.1`.
-3. The GitHub release workflow builds the signed Android APK and creates the draft release.
+3. For an Android release, manually run the **Draft release** workflow from GitHub Actions, enter the tag, and it will build the signed APK and create a draft release.
 4. Upload the Flatpak, Decky ZIP, and signed/notarized macOS ZIP to that draft. Review the generated notes and publish it.
 
 The release workflow deliberately does not fabricate unsigned production artifacts. A release is published only after the platform artifacts have been verified.
