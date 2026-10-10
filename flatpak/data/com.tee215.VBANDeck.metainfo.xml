@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.tee215.VBANDeck</id>
+  <name>VBAN Deck</name>
+  <summary>Native PipeWire to VBAN audio streamer for Steam Deck</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description><p>Captures the current PipeWire output monitor natively, buffers PCM audio, and sends paced VBAN packets to a receiver such as Voicemeeter.</p></description>
+  <launchable type="desktop-id">com.tee215.VBANDeck.desktop</launchable>
+  <releases>
+    <release version="0.2.1" date="2026-08-15"/>
+  </releases>
+</component>

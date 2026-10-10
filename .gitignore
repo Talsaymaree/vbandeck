@@ -1,0 +1,37 @@
+# Local/editor state
+.DS_Store
+.idea/
+.vscode/
+*.iml
+**/xcuserdata/
+**/*.xcuserstate
+apple/.build/
+apple/.swiftpm/
+
+# Android outputs and local SDK configuration
+android/.gradle/
+android/local.properties
+android/.release-password
+android/app/build/
+android/build/
+*.jks
+*.keystore
+
+# Decky outputs and dependencies
+decky/node_modules/
+decky/dist/
+decky/out/
+decky/release/
+decky/bin/
+decky/backend/out/
+
+# Flatpak build/cache outputs
+flatpak/build-dir/
+flatpak/build-release/
+flatpak/repo/
+flatpak/dist/
+flatpak/src/__pycache__/
+
+# Release archives are generated artifacts, not source
+*.flatpak
+*.zip

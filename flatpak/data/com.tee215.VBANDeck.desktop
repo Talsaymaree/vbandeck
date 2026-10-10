@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=VBAN Deck
+Comment=Stream Steam Deck audio to a VBAN receiver
+Exec=vbandeck
+Icon=com.tee215.VBANDeck
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Network;
+StartupNotify=true

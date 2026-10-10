@@ -1,0 +1,26 @@
+app-id: com.tee215.VBANDeck
+runtime: org.gnome.Platform
+runtime-version: '49'
+sdk: org.gnome.Sdk
+command: vbandeck
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --filesystem=xdg-run/pipewire-0
+  - --device=dri
+modules:
+  - name: vbandeck
+    buildsystem: simple
+    build-commands:
+      - install -d /app/bin
+      - cc -O2 -std=gnu11 -Wall -Wextra src/vban-pipewire.c -o /app/bin/vban-pipewire $(pkg-config --cflags --libs libpipewire-0.3) -pthread
+      - install -Dm755 src/vbandeck /app/bin/vbandeck
+      - install -Dm755 src/vbandeck.py /app/lib/vbandeck/vbandeck.py
+      - install -Dm644 data/com.tee215.VBANDeck.desktop /app/share/applications/com.tee215.VBANDeck.desktop
+      - install -Dm644 data/com.tee215.VBANDeck.metainfo.xml /app/share/metainfo/com.tee215.VBANDeck.metainfo.xml
+      - install -Dm644 data/icons/hicolor/scalable/apps/com.tee215.VBANDeck.svg /app/share/icons/hicolor/scalable/apps/com.tee215.VBANDeck.svg
+    sources:
+      - type: dir
+        path: .

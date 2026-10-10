@@ -1,0 +1,11 @@
+{
+  "name": "VBAN Deck",
+  "author": "tee215",
+  "flags": ["debug", "_root"],
+  "api_version": 1,
+  "publish": {
+    "tags": ["audio", "vban", "streaming"],
+    "description": "Stream Steam Deck system audio to a VBAN receiver from Game Mode.",
+    "image": "assets/vban-deck-logo.svg"
+  }
+}

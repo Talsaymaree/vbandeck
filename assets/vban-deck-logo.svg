@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">VBAN Deck logo</title>
+  <desc id="desc">A cyan audio waveform transmitting packets on a dark rounded square.</desc>
+  <defs>
+    <linearGradient id="background" x1="120" y1="80" x2="900" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#15233b"/>
+      <stop offset="1" stop-color="#09101e"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="242" y1="350" x2="770" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69f3ff"/>
+      <stop offset="1" stop-color="#337dff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#background)"/>
+  <rect x="42" y="42" width="940" height="940" rx="190" fill="none" stroke="#71ecff" stroke-opacity=".16" stroke-width="8"/>
+  <g fill="none" stroke="url(#signal)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M176 570h104l74-154 104 310 116-446 94 290h180" stroke-width="54" filter="url(#glow)"/>
+    <path d="M691 329c100 38 170 134 170 247 0 112-69 208-168 247" stroke-width="35" opacity=".92"/>
+    <path d="M754 221c139 55 237 190 237 355 0 164-97 298-235 354" stroke-width="27" opacity=".55"/>
+  </g>
+  <g fill="#e9feff">
+    <circle cx="203" cy="570" r="20"/><circle cx="823" cy="570" r="20"/>
+  </g>
+  <g fill="#69f3ff">
+    <circle cx="173" cy="760" r="13"/><circle cx="223" cy="760" r="13"/><circle cx="273" cy="760" r="13"/>
+  </g>
+</svg>
