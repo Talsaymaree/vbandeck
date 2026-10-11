@@ -32,6 +32,13 @@ flatpak/repo/
 flatpak/dist/
 flatpak/src/__pycache__/
 
+# Nintendo Switch devkitPro outputs
+switch/poc/build/
+switch/poc/*.elf
+switch/poc/*.nro
+switch/poc/*.nacp
+switch/poc/*.map
+
 # Release archives are generated artifacts, not source
 *.flatpak
 *.zip

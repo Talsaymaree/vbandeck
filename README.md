@@ -8,6 +8,7 @@ VBAN Deck sends device audio as VBAN PCM packets to a receiver such as Voicemeet
 | Steam Deck Game Mode (Decky Loader) | `decky/` | Working plugin source |
 | Android | `android/` | Working playback-capture sender |
 | macOS | `VBANDeckMac/` | Native SwiftUI application |
+| Nintendo Switch (CFW) | `switch/` | Experimental VBAN tone-sender proof of concept |
 
 The protocol uses 48 kHz, stereo, signed 16-bit PCM in 256-frame UDP packets. Configure the receiver with the sender's stream name and port (default `6980`).
 
@@ -23,6 +24,7 @@ See each platform's README:
 - [Decky Loader](decky/README.md)
 - [Android APK](android/README.md)
 - [macOS app](VBANDeckMac/)
+- [Nintendo Switch experiment](switch/)
 - [Release guide](docs/RELEASING.md)
 
 ## License
