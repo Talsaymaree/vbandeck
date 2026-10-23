@@ -8,7 +8,7 @@ import VBANAppleShared
 
 @MainActor
 final class MacStreamingViewModel: ObservableObject {
-    @Published var host = "10.0.0.137"
+    @Published var host = ""
     @Published var port = 6980
     @Published var streamName = "MacBook"
     @Published var captureSystemAudio = true

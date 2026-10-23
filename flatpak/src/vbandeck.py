@@ -67,7 +67,7 @@ class Window(Adw.ApplicationWindow):
         self.load()
 
     def load(self):
-        vals = {'ip':'10.0.0.137','port':'6980','stream':'SteamDeck','target':''}
+        vals = {'ip':'','port':'6980','stream':'SteamDeck','target':''}
         try: vals.update(json.loads(CFG.read_text()))
         except Exception: pass
         self.ip.set_text(vals['ip']); self.port.set_text(str(vals['port']))

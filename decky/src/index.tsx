@@ -6,7 +6,7 @@ import {
   staticClasses,
 } from "@decky/ui";
 import { callable, definePlugin, toaster } from "@decky/api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBroadcastTower } from "react-icons/fa";
 
 type Settings = {
@@ -24,12 +24,12 @@ type Status = {
 };
 
 const getStatus = callable<[], Status>("get_status");
-const saveSettings = callable<[settings: Settings], Settings>("save_settings");
 const startStream = callable<[ip: string, port: number, stream: string, target: string], Status>("start_stream");
 const stopStream = callable<[], Status>("stop_stream");
 
 function Content() {
-  const [settings, setSettings] = useState<Settings>({ ip: "10.0.0.137", port: 6980, stream: "SteamDeck", target: "" });
+  const [settings, setSettings] = useState<Settings>({ ip: "", port: 6980, stream: "SteamDeck", target: "" });
+  const settingsInitialized = useRef(false);
   const [running, setRunning] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("Stopped");
@@ -38,7 +38,11 @@ function Content() {
     try {
       const s = await getStatus();
       setRunning(s.running);
-      setSettings(s.settings);
+      // Poll status without replacing the form's in-progress edits.
+      if (!settingsInitialized.current) {
+        settingsInitialized.current = true;
+        setSettings(s.settings);
+      }
       setMessage(s.running ? `Streaming to ${s.settings.ip}:${s.settings.port}` : (s.error || "Stopped"));
     } catch (e) {
       setMessage(String(e));
@@ -52,13 +56,14 @@ function Content() {
   }, []);
 
   const update = <K extends keyof Settings>(key: K, value: Settings[K]) => {
+    // Also protect edits made before the initial status request returns.
+    settingsInitialized.current = true;
     setSettings((old) => ({ ...old, [key]: value }));
   };
 
   const start = async () => {
     setBusy(true);
     try {
-      await saveSettings(settings);
       const s = await startStream(settings.ip.trim(), Number(settings.port), settings.stream.trim(), settings.target.trim());
       setRunning(s.running);
       setMessage(s.running ? `Streaming to ${s.settings.ip}:${s.settings.port}` : (s.error || "Failed to start"));

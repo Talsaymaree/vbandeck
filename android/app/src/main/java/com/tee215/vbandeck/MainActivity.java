@@ -153,7 +153,7 @@ public class MainActivity extends Activity {
     }
 
     private void loadSettings() {
-        ipField.setText(prefs.getString("ip", "10.0.0.137"));
+        ipField.setText(prefs.getString("ip", ""));
         portField.setText(String.valueOf(prefs.getInt("port", 6980)));
         streamField.setText(prefs.getString("stream", "Android"));
     }

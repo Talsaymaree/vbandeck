@@ -1,4 +1,4 @@
-# VBAN Deck 0.2.1
+# VBAN Deck 0.2.2
 
 VBAN Deck streams Steam Deck/Linux desktop audio to a VBAN receiver such as Voicemeeter using native PipeWire capture.
 
@@ -37,13 +37,13 @@ flatpak run com.tee215.VBANDeck
 The resulting file is:
 
 ```text
-dist/VBANDeck-0.2.1.flatpak
+dist/VBANDeck-0.2.2.flatpak
 ```
 
 Share that file. On a Flatpak-enabled Linux desktop, it can be installed using the graphical software installer when supported, or from a terminal with:
 
 ```sh
-flatpak install --user VBANDeck-0.2.1.flatpak
+flatpak install --user VBANDeck-0.2.2.flatpak
 ```
 
 After installation, the exported desktop entry makes **VBAN Deck** available in the application launcher; no command line is required to run it.

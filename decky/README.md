@@ -33,14 +33,14 @@ chmod +x build-decky.sh
 The resulting shareable plugin is:
 
 ```text
-release/VBANDeck-0.1.0.zip
+release/VBANDeck-0.2.2.zip
 ```
 
 ## Install
 
 Install the ZIP through Decky Loader's plugin installation/developer workflow. After installation, open the `...` quick-access menu → Decky → **VBAN Deck**.
 
-Enter the receiver PC IP (for example `10.0.0.137`), leave port at `6980`, choose a stream name that matches the Voicemeeter VBAN receiver, and press **Start Streaming**.
+Enter your receiver PC's IP address, leave port at `6980`, choose a stream name that matches the Voicemeeter VBAN receiver, and press **Start Streaming**. The destination IP starts blank on fresh installs; saved settings are restored when available.
 
 ## PipeWire note
 

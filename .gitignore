@@ -26,6 +26,7 @@ decky/bin/
 decky/backend/out/
 
 # Flatpak build/cache outputs
+flatpak/.flatpak-builder/
 flatpak/build-dir/
 flatpak/build-release/
 flatpak/repo/

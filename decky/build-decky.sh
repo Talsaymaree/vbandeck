@@ -2,7 +2,6 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-VERSION="0.2.1"
 NAME="VBANDeck"
 
 if ! command -v npm >/dev/null 2>&1; then
@@ -10,6 +9,8 @@ if ! command -v npm >/dev/null 2>&1; then
   echo "Build on a PC with Node.js 16.14+ or install Node.js in your dev environment."
   exit 1
 fi
+
+VERSION="$(node -p "require('./package.json').version")"
 
 # Use pnpm 9 without requiring a global install.
 if command -v pnpm >/dev/null 2>&1; then

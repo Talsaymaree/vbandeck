@@ -1,6 +1,6 @@
 {
   "name": "vban-deck-decky",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Decky Loader frontend for VBAN Deck",
   "type": "module",
   "scripts": {

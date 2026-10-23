@@ -8,7 +8,7 @@ from pathlib import Path
 import decky
 
 DEFAULTS = {
-    "ip": "10.0.0.137",
+    "ip": "",
     "port": 6980,
     "stream": "SteamDeck",
     "target": "",
@@ -34,7 +34,7 @@ class Plugin:
         return env
 
     def _load_settings_sync(self):
-        self.settings_file = Path(decky.DECKY_SETTINGS_DIR) / "settings.json"
+        self.settings_file = Path(decky.DECKY_PLUGIN_SETTINGS_DIR) / "settings.json"
         try:
             loaded = json.loads(self.settings_file.read_text())
             self.settings.update({k: loaded[k] for k in DEFAULTS if k in loaded})
@@ -90,7 +90,11 @@ class Plugin:
         return dict(self.settings)
 
     async def start_stream(self, ip: str, port: int, stream: str, target: str = ""):
-        await self.save_settings({"ip": ip, "port": port, "stream": stream, "target": target})
+        try:
+            await self.save_settings({"ip": ip, "port": port, "stream": stream, "target": target})
+        except (ValueError, TypeError, OSError) as e:
+            self.last_error = str(e)
+            return self._status()
         if self._is_running():
             return self._status()
 
