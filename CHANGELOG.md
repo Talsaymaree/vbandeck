@@ -2,6 +2,12 @@
 
 All notable changes to VBAN Deck are documented here.
 
+## [Unreleased]
+
+### Removed
+
+- Unreleased platform sources and unrelated tooling; the repository now focuses on Flatpak and Decky Loader.
+
 ## [0.2.2] - 2026-10-23
 
 ### Fixed

@@ -2,33 +2,21 @@
 
 ## Supported deliverables
 
-- Android APK (`VBANDeck-Android-<version>.apk`)
 - Steam Deck / Linux Flatpak (`VBANDeck-<version>.flatpak`)
 - Decky Loader plugin (`VBANDeck-<version>.zip`)
-- macOS archive, built and signed on macOS (`VBANDeck-<version>-macOS.zip`)
 
 ## Before tagging
 
-1. Update the version in `flatpak/VERSION`, `android/app/build.gradle`, and `decky/package.json`.
-2. Add the release notes to `CHANGELOG.md`.
-3. Build and smoke-test each supported platform.
-4. For Android, use a private release keystore; never publish the debug APK.
-5. For macOS, archive in Xcode and sign/notarize before distributing outside the App Store.
-
-### GitHub Actions secrets
-
-Configure these in the repository's protected `release` environment before pushing a tag:
-
-- `ANDROID_KEYSTORE_BASE64` — base64-encoded release keystore
-- `ANDROID_KEYSTORE_PASSWORD`
-- `ANDROID_KEY_ALIAS`
-- `ANDROID_KEY_PASSWORD`
+1. Update `flatpak/VERSION`, `decky/package.json`, and the Flatpak AppStream release metadata.
+2. Add the release notes to `CHANGELOG.md` and `docs/releases/v<version>.md`.
+3. Build the Decky ZIP with `decky/build-decky.sh` and the Flatpak with `flatpak/build-release.sh`.
+4. Test both builds, including entering the receiver IP, starting and stopping audio, and restoring saved settings.
 
 ## Publish
 
 1. Commit the release changes and push `main`.
-2. Create and push an annotated tag, for example `git tag -a v0.2.1 -m "VBAN Deck 0.2.1"` then `git push origin v0.2.1`.
-3. For an Android release, manually run the **Draft release** workflow from GitHub Actions, enter the tag, and it will build the signed APK and create a draft release.
-4. Upload the Flatpak, Decky ZIP, and signed/notarized macOS ZIP to that draft. Review the generated notes and publish it.
+2. Create and push an annotated version tag, for example `git tag -a v0.2.3 -m "VBAN Deck 0.2.3"` then `git push origin v0.2.3`.
+3. Manually run the **Draft release** workflow from GitHub Actions with that tag. It checks both versions and creates a draft using the patch notes for that version.
+4. Upload the tested Flatpak and Decky ZIP to the draft. Review the patch notes and publish it.
 
-The release workflow deliberately does not fabricate unsigned production artifacts. A release is published only after the platform artifacts have been verified.
+The workflow creates a draft only. Publish after both tested downloads are attached and verified.

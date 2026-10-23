@@ -54,7 +54,7 @@ mkdir -p release/VBANDeck/{dist,bin,assets}
 cp dist/index.js release/VBANDeck/dist/index.js
 cp bin/vban-pipewire release/VBANDeck/bin/vban-pipewire
 cp main.py plugin.json package.json LICENSE README.md release/VBANDeck/
-cp ../assets/vban-deck-logo.svg release/VBANDeck/assets/vban-deck-logo.svg
+cp assets/vban-deck-logo.svg release/VBANDeck/assets/vban-deck-logo.svg
 
 mkdir -p release
 (
